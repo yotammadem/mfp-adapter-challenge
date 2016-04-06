@@ -3,7 +3,7 @@
 ###Background
 
 Acme systems, Foundation customer had a great mobile app project. As part of the project, they needed to add
-a contact list capabilities to their app, James, their mobile architect decided to implement a simple, mobile specific REST API
+contact list capabilities to their app. James, their mobile architect decided to implement a simple, mobile specific REST API
 for the contact list app, He defined the API in his notes and sent it to the dev team for development, The team got the API specifications,
 they came back to James and asked him which technology to use for implementing this API. James knew that most of his team familiar with
 Java and JAX-RS, he heard about the flexibility and ease of development of MFP adapters therefore he decided that the team should use
@@ -36,9 +36,9 @@ git clone https://github.com/yotammadem/mfp-adapter-challenge.git
 
 Then open the project using your favourite IDE
 
-Make sure you start the MFP server
+Make sure you start the MFP server, from the MobileFirst-8.0.0.0 folder run
 ```
-run.sh
+./run.sh
 ```
 
 Then go to the mfp-adapter-challenge folder and type
