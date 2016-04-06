@@ -23,7 +23,7 @@ libraries which are used by Java developers in order to implement those automati
 thin and quite simple test infrastructure which can be used by the team to develop the API tests. He also implemented the first test out
 of list of 4 scenarios he had in mind just to show them how to use the simple API.
 
-### Your mission
+### Your mission #1: Write automated tests
 You are a developer from the contact list API dev team, your mission is to complete the task by implementing the remaining automated
 tests.
 
@@ -47,3 +47,24 @@ mvn install
 ```
 
 This will compile the adapter, build it, deploy it and run the automated tests.
+
+
+### Last but not least
+The dev team completed to implement the automatic tests and all the tests are passing now :)
+The came back to James, and it was decided to publish the app to the customers. The app was working fine and customers were happy
+until one day...
+
+One day they discovered a lot of bad comments and low ratings in the app store. Customers were complaining about an empty contact list,
+Their information was lost!
+
+The issue was escalated and brought to the dev team. They noticed that since the first server restart the contact list became empty.
+Then, they went to the code and seen that there is a problem: The contact list is saved in memory instead of in Cloudant as was designed...
+Immediately the dev team started to change their impl to use Cloudant. Luckily, they already had the automated tests so they could change the
+implementation and then run the tests again to make sure the API functionality is not broken.
+
+
+### Your mission #2: Change the implementation of contact list API to use Cloudant
+Your mission is to change the contact list REST API implementation such that the contacts will be persisted on Cloudant instead of saved in
+a static HashMap.
+
+The getting started sample: [Cloudant Java Adapter](https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80/Adapters/CloudantJava) might help.
