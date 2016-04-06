@@ -16,6 +16,11 @@ import java.io.IOException;
 @ContextConfiguration(classes = IntegrationTestConfig.class)
 public class ContactListApiIT {
 
+    /**
+     * By default, MFP adapters are protected by the default scope.
+     */
+    private static final String DEFAULT_SCOPE = "";
+
     @Autowired
     RESTUtil restUtil;
 
@@ -27,7 +32,7 @@ public class ContactListApiIT {
     @Test
     public void testAddContact() throws IOException {
         //delete the contact (and ignore the result) just in case the DB was dirty
-        restUtil.performRequest("/tedy", null, null, HttpMethod.DELETE, "");
+        restUtil.performRequest("/tedy", null, null, HttpMethod.DELETE, DEFAULT_SCOPE);
 
         Contact contact = new Contact();
         contact.name = "tedy";

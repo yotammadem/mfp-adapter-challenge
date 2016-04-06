@@ -32,6 +32,21 @@ public class RESTUtil {
 
     ObjectMapper objectMapper = new ObjectMapper();
 
+    /**
+     *
+     * @param url - The resource URL, relative to the adapter
+     * @param responseType - The Java type of the expected response type (can be null in case the response is empty)
+     * @param entityObj - The object to send in the request body (POJOs are mapped to JSON automatically)
+     * @param method - The HTTP method to use
+     * @param scope - The security scope of MFP
+     * @param urlVariables - If place holders were used in the URL, these are their values. For example,
+     *                     the URL can be: /books/{bookId}/pages/{pageId}, then the urlVariables should be
+     *                     the values of bookId and pageId (in this order)
+     * @param <T>
+     * @return
+     * @throws RestClientException
+     * @throws IOException
+     */
     public <T> ResponseEntity<T> performRequest(String url, Class<T> responseType, Object entityObj, HttpMethod method, String scope, Object... urlVariables) throws RestClientException, IOException {
         HttpEntity<?> entity = new HttpEntity<Object>(entityObj);
         if (scope != null) {
