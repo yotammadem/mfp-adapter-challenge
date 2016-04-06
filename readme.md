@@ -24,5 +24,26 @@ thin and quite simple test infrastructure which can be used by the team to devel
 of list of 4 scenarios he had in mind just to show them how to use the simple API.
 
 ### Your mission
-You are the developers from the contact list API dev team, your mission is to complete the task by implementing the remaining automated
-tests. 
+You are a developer from the contact list API dev team, your mission is to complete the task by implementing the remaining automated
+tests.
+
+The example test is written in file: [src/test/java/com/acme/apis/ContactListApiIT.java](src/test/java/com/acme/apis/ContactListApiIT.java)
+
+In order to start, clone this repository:
+```
+git clone https://github.com/yotammadem/mfp-adapter-challenge.git
+```
+
+Then open the project using your favourite IDE
+
+Make sure you start the MFP server
+```
+run.sh
+```
+
+Then go to the mfp-adapter-challenge folder and type
+```
+mvn install
+```
+
+This will compile the adapter, build it, deploy it and run the automated tests.
