@@ -55,6 +55,7 @@ public class ContactListApiResource {
             @ApiResponse(code = 406, message = "Contact (name) already exist")
     })
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response addContact(Contact contact, @Context UriInfo uriInfo) {
         if (contactMap.containsKey(contact.name)) {
             return Response.status(409).entity("Contact named: " + contact.name + " already exist").build();
@@ -73,6 +74,7 @@ public class ContactListApiResource {
             @ApiResponse(code = 404, message = "Contact not found")
     })
     @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response updateContact(Contact contact) {
         if (contactMap.containsKey(contact.name)) {
             contactMap.put(contact.name, contact);
