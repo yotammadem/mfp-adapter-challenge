@@ -73,16 +73,49 @@
 				<artifactId>adapter-maven-plugin</artifactId>
 				<version>8.0.0</version>
 				<extensions>true</extensions>
+				<!-- Deploy execution commented out due to a bug, see details below... -->
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<phase>pre-integration-test</phase>-->
+						<!--<goals>-->
+							<!--<goal>deploy</goal>-->
+						<!--</goals>-->
+					<!--</execution>-->
+				<!--</executions>-->
+			</plugin>
+
+			<!-- Due to a bug in the public adapter maven plugin deploy operation -->
+			<!-- I commented out the above execution and replaced it by direct execution of curl command -->
+			<!-- To deploy the adapter. Unfortunately this is not going to work in Windows unless you -->
+			<!-- download and install curl -->
+			<!-- see: https://curl.haxx.se/download.html-->
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2</version>
 				<executions>
 					<execution>
+						<id>deploy-adapter</id>
 						<phase>pre-integration-test</phase>
 						<goals>
-							<goal>deploy</goal>
+							<goal>exec</goal>
 						</goals>
+						<configuration>
+							<executable>curl</executable>
+							<arguments>
+								<argument>-X</argument>
+								<argument>POST</argument>
+								<argument>-u</argument>
+								<argument>${mfpfUser}:${mfpfPassword}</argument>
+								<argument>-F</argument>
+								<argument>file=@target/contactListApi.adapter</argument>
+								<argument>${mfpfUrl}/management-apis/2.0/runtimes/mfp/adapters</argument>
+							</arguments>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
-
 
 			<plugin>
 				<artifactId>maven-failsafe-plugin</artifactId>
